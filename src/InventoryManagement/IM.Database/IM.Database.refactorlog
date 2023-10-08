@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="7461af96-1bef-47ed-82d5-a80b0b77f33c" ChangeDateTime="10/07/2023 20:40:58">
+    <Property Name="ElementName" Value="[Inventory].[ProductInventory]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[Inventory]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="ProductInventoryTransaction" />
+  </Operation>
+</Operations>
