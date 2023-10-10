@@ -3,15 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34112.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IM.Database", "InventoryManagement\IM.Database\IM.Database.sqlproj", "{68D82FD4-F6B5-414D-B765-45EE2D62E6F1}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NM.Database", "Notification Management\NM.Database\NM.Database.sqlproj", "{3BF63258-A02B-47DD-AB18-354B126E13C1}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OM.Database", "Order Management\OM.Database\OM.Database.sqlproj", "{7A061B57-4E26-4CD8-84A8-2EAF168F58AE}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Core.Database", "Core\Core.Database\Core.Database.sqlproj", "{F20C9A85-A15A-49A0-83B0-329960351C37}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SM.Database", "Shipping Management\SM.Database\SM.Database.sqlproj", "{ABFDFDC3-23DD-457D-92D5-447A7BE21961}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Inventory.Database", "Inventory\Inventory.Database\Inventory.Database.sqlproj", "{68D82FD4-F6B5-414D-B765-45EE2D62E6F1}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Notice.Database", "Notice\Notice.Database\Notice.Database.sqlproj", "{3BF63258-A02B-47DD-AB18-354B126E13C1}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Purchase.Database", "Purchase\Purchase.Database\Purchase.Database.sqlproj", "{7A061B57-4E26-4CD8-84A8-2EAF168F58AE}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Shipping.Database", "Shipping\Shipping.Database\Shipping.Database.sqlproj", "{ABFDFDC3-23DD-457D-92D5-447A7BE21961}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FD68E4E0-FCCF-4CBC-BCAD-2CA03C34E7DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventory", "Inventory", "{AB34A621-FEC8-4FB3-99E9-D8F81C8D2CAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notice", "Notice", "{30443ACC-FF9C-43F7-B1A8-F6039A31E042}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Purchase", "Purchase", "{0854461C-B5F2-4EB3-A0DC-DDF7F4B3FEE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shipping", "Shipping", "{3B553926-4EC2-4518-B20B-B7320A4D0419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +29,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F20C9A85-A15A-49A0-83B0-329960351C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20C9A85-A15A-49A0-83B0-329960351C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20C9A85-A15A-49A0-83B0-329960351C37}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F20C9A85-A15A-49A0-83B0-329960351C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20C9A85-A15A-49A0-83B0-329960351C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20C9A85-A15A-49A0-83B0-329960351C37}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{68D82FD4-F6B5-414D-B765-45EE2D62E6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68D82FD4-F6B5-414D-B765-45EE2D62E6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68D82FD4-F6B5-414D-B765-45EE2D62E6F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -37,12 +53,6 @@ Global
 		{7A061B57-4E26-4CD8-84A8-2EAF168F58AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A061B57-4E26-4CD8-84A8-2EAF168F58AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A061B57-4E26-4CD8-84A8-2EAF168F58AE}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{F20C9A85-A15A-49A0-83B0-329960351C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F20C9A85-A15A-49A0-83B0-329960351C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F20C9A85-A15A-49A0-83B0-329960351C37}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{F20C9A85-A15A-49A0-83B0-329960351C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F20C9A85-A15A-49A0-83B0-329960351C37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F20C9A85-A15A-49A0-83B0-329960351C37}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{ABFDFDC3-23DD-457D-92D5-447A7BE21961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABFDFDC3-23DD-457D-92D5-447A7BE21961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFDFDC3-23DD-457D-92D5-447A7BE21961}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -52,6 +62,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F20C9A85-A15A-49A0-83B0-329960351C37} = {FD68E4E0-FCCF-4CBC-BCAD-2CA03C34E7DC}
+		{68D82FD4-F6B5-414D-B765-45EE2D62E6F1} = {AB34A621-FEC8-4FB3-99E9-D8F81C8D2CAD}
+		{3BF63258-A02B-47DD-AB18-354B126E13C1} = {30443ACC-FF9C-43F7-B1A8-F6039A31E042}
+		{7A061B57-4E26-4CD8-84A8-2EAF168F58AE} = {0854461C-B5F2-4EB3-A0DC-DDF7F4B3FEE1}
+		{ABFDFDC3-23DD-457D-92D5-447A7BE21961} = {3B553926-4EC2-4518-B20B-B7320A4D0419}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F15D7C67-06E2-4861-8D6A-3DC0528F8314}
