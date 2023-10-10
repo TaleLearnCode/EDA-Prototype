@@ -57,28 +57,31 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Tables" />
-    <Folder Include="Scripts" />
-    <Folder Include="Scripts\Populate" />
     <Folder Include="Functions" />
-    <Folder Include="Views" />
+    <Folder Include="Inventory" />
+    <Folder Include="Inventory\Views" />
+    <Folder Include="Product" />
+    <Folder Include="Product\Scripts" />
+    <Folder Include="Product\Tables" />
+    <Folder Include="Inventory\Tables" />
+    <Folder Include="Inventory\Scripts" />
+    <Folder Include="Inventory\Scripts\Populate" />
+    <Folder Include="Product\Scripts\Populate" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Inventory.sql" />
-    <Build Include="Tables\Product.sql" />
-    <Build Include="Tables\ProductInventoryTransaction.sql" />
-    <Build Include="Tables\ProductInventoryAction.sql" />
-    <None Include="Scripts\Populate\Populate_Product.sql" />
-    <None Include="Scripts\Populate\Populate_ProductInventoryTransaction.sql" />
-    <None Include="Scripts\Populate\Populate_ProductInventoryAction.sql" />
     <Build Include="Functions\ufnGetProductInventoryOnHand.sql" />
-    <Build Include="Views\vwProductInventory.sql" />
     <Build Include="Functions\ufnGetReservedProductCount.sql" />
+    <Build Include="Inventory\Views\vwProductInventory.sql" />
+    <Build Include="Product\Tables\Product.sql" />
+    <Build Include="Product\Product.sql" />
+    <Build Include="Inventory\Tables\InventoryAction.sql" />
+    <Build Include="Inventory\Tables\ProductInventoryTransaction.sql" />
+    <None Include="Inventory\Scripts\Populate\Populate_InventoryAction.sql" />
+    <None Include="Inventory\Scripts\Populate\Populate_InventoryTransaction.sql" />
+    <Build Include="Inventory\Inventory.sql" />
+    <None Include="Product\Scripts\Populate\Populate_Product.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="IM.Database.refactorlog" />
+    <PostDeploy Include="Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

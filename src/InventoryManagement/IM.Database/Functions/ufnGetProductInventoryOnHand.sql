@@ -10,9 +10,9 @@ BEGIN
   DECLARE @Debits INT
   DECLARE @Reserved INT
   
-  SELECT @Credits = SUM(InventoryCredit) FROM Inventory.ProductInventoryTransaction WHERE ProductId = @ProductId
-  SELECT @Debits = SUM(InventoryDebit) FROM Inventory.ProductInventoryTransaction WHERE ProductId = @ProductId
-  SELECT @Reserved = SUM(InventoryReserve) FROM Inventory.ProductInventoryTransaction WHERE ProductId = @ProductId
+  SELECT @Credits = SUM(InventoryCredit) FROM Inventory.InventoryTransaction WHERE ProductId = @ProductId
+  SELECT @Debits = SUM(InventoryDebit) FROM Inventory.InventoryTransaction WHERE ProductId = @ProductId
+  SELECT @Reserved = SUM(InventoryReserve) FROM Inventory.InventoryTransaction WHERE ProductId = @ProductId
 
 
   RETURN @Credits - (@Debits + @Reserved)
