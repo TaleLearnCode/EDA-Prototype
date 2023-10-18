@@ -4933,24 +4933,24 @@ USING (VALUES
                ('MN', 'ZW', 1, 'Matabeleland North', 'province'),
                ('MS', 'ZW', 1, 'Matabeleland South', 'province'),
                ('MI', 'ZW', 1, 'Midlands', 'province'))
-AS SOURCE (CountryDivisionId,
-           CountryId,
+AS SOURCE (CountryDivisionCode,
+           CountryCode,
            IsActive,
            CountryDivisionName,
            CategoryName)
-ON TARGET.CountryDivisionId = SOURCE.CountryDivisionId AND TARGET.CountryId = SOURCE.CountryId
+ON TARGET.CountryDivisionCode = SOURCE.CountryDivisionCode AND TARGET.CountryCode = SOURCE.CountryCode
 WHEN MATCHED THEN UPDATE SET TARGET.CountryDivisionName = SOURCE.CountryDivisionName,
-                             TARGET.CountryId           = SOURCE.CountryId,
+                             TARGET.CountryCode           = SOURCE.CountryCode,
                              TARGET.CategoryName        = SOURCE.CategoryName,
                              TARGET.IsActive            = SOURCE.IsActive
-WHEN NOT MATCHED THEN INSERT (CountryDivisionId,
+WHEN NOT MATCHED THEN INSERT (CountryDivisionCode,
                               CountryDivisionName,
-                              CountryId,
+                              CountryCode,
                               CategoryName,
                               IsActive)
-                      VALUES (SOURCE.CountryDivisionId,
+                      VALUES (SOURCE.CountryDivisionCode,
                               SOURCE.CountryDivisionName,
-                              SOURCE.CountryId,
+                              SOURCE.CountryCode,
                               SOURCE.CategoryName,
                               SOURCE.IsActive);
 GO

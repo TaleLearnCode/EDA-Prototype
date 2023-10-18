@@ -1,0 +1,67 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "PurchaseContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "BuildingBricks.Purchase",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[Core].[Country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Core].[CountryDivision]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Product].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[Customer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[CustomerPurchase]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[PurchaseLineItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[PurchaseStatus]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "sql-eda-prototype-use.sqldb-purchase-prototype-use.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

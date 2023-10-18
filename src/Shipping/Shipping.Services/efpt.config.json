@@ -1,0 +1,67 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "sqldb-shipping-prototype-useContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "BuildingBricks.Shipping",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[Product].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[Customer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[CustomerPurchase]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Purchase].[OrderItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shipping].[Shipment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shipping].[ShipmentStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shipping].[ShipmentStatusDetail]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "sql-eda-prototype-use.sqldb-shipping-prototype-use.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

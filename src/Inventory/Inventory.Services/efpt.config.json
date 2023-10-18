@@ -1,0 +1,63 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "InventoryContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "BuildingBricks.Inventory",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[Inventory].[InventoryAction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Inventory].[InventoryTransaction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Product].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Inventory].[vwProductInventory]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[Inventory].[ufnGetProductInventoryOnHand]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[Inventory].[ufnGetReservedProductCount]",
+         "ObjectType": 2
+      }
+   ],
+   "UiHint": "sql-eda-prototype-use.sqldb-inventory-prototype-use.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

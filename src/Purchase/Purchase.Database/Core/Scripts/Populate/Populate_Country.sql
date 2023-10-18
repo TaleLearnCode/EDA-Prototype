@@ -249,31 +249,25 @@ USING (VALUES ('AD', 1, 1, '150', '039', 'Andorra', 'parish'),
               ('ZA', 1, 1, '002', '018', 'South Africa', 'province'),
               ('ZM', 1, 1, '002', '014', 'Zambia', 'province'),
               ('ZW', 1, 1, '002', '014', 'Zimbabwe', 'province'))
-AS SOURCE (CountryId,
+AS SOURCE (CountryCode,
            IsActive,
            HasDivisions,
            WorldRegionCode,
            WorldSubregionCode,
            CountryName,
            DivisionName)
-ON TARGET.CountryId = SOURCE.CountryId
+ON TARGET.CountryCode = SOURCE.CountryCode
 WHEN MATCHED THEN UPDATE SET TARGET.CountryName        = SOURCE.CountryName,
-                             TARGET.WorldRegionCode    = SOURCE.WorldRegionCode,
-                             TARGET.WorldSubregionCode = SOURCE.WorldSubregionCode,
                              TARGET.DivisionName       = SOURCE.DivisionName,
                              TARGET.HasDivisions       = SOURCE.HasDivisions,
                              TARGET.IsActive           = SOURCE.IsActive
-WHEN NOT MATCHED THEN INSERT (CountryId,
+WHEN NOT MATCHED THEN INSERT (CountryCode,
                               CountryName,
-                              WorldRegionCode,
-                              WorldSubregionCode,
                               DivisionName,
                               HasDivisions,
                               IsActive)
-                      VALUES (SOURCE.CountryId,
+                      VALUES (SOURCE.CountryCode,
                               SOURCE.CountryName,
-                              SOURCE.WorldRegionCode,
-                              SOURCE.WorldSubregionCode,
                               SOURCE.DivisionName,
                               SOURCE.HasDivisions,
                               SOURCE.IsActive);
