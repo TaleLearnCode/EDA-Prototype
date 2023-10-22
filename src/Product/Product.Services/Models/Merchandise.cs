@@ -120,4 +120,13 @@ public class Merchandise : IModel
 	[JsonProperty("depthInches")]
 	public decimal DepthInches { get; set; }
 
+	/// <summary>
+	/// Flag indicating whether the record has been marked as deleted.
+	/// </summary>
+	[JsonProperty("isDeleted")]
+	public bool IsDeleted { get; set; }
+
+	[JsonProperty("ttl")]
+	public int? TTL { get; set; }
+
 }

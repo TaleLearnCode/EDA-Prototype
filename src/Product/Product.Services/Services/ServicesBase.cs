@@ -2,7 +2,7 @@
 
 namespace BuildingBricks.Product.Services;
 
-public abstract class ServicesBase<T> where T : IModel
+public abstract class ServicesBase<T> where T : class, IModel
 {
 
 	private readonly Container _container;

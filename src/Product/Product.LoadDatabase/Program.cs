@@ -12,7 +12,7 @@ string dataPath = GetDataPath();
 ConfigServices configServices = new("https://appcs-eda-prototype-use.azconfig.io", "Development");
 
 using CosmosClient cosmosClient = new(configServices.CosmosUri, configServices.CosmosKey);
-Database database = await ConnectToDatabaseAsync(configServices.ProductCosmosDatabaseId);
+Database database = ConnectToDatabaseAsync(configServices.ProductCosmosDatabaseId);
 
 Container metadataContainer = await ConnectToContainerAsync(configServices.ProductMetadataContainerId, configServices.ProductMetadataPartitionKey);
 AvailabilityServices availabilityServices = new(configServices, metadataContainer);
@@ -65,9 +65,9 @@ static string GetDataPath()
 	return response;
 }
 
-async Task<Database> ConnectToDatabaseAsync(string id)
+Database ConnectToDatabaseAsync(string id)
 {
-	Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync(id);
+	Database database = cosmosClient.GetDatabase(id);
 	Console.WriteLine($"Database Connected:\t{database.Id}");
 	return database;
 }

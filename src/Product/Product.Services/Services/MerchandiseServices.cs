@@ -21,6 +21,11 @@ public class MerchandiseServices : ServicesBase<Merchandise>
 
 	public async Task<Merchandise> UpsertAsync(Merchandise item) => await UpsertAsync(item, item.Id);
 
-	public async Task<bool> DeleteAsync(Merchandise item) => await DeleteAsync(item, item.Id);
+	public async Task<bool> DeleteAsync(Merchandise item)
+	{
+		item.TTL = 60 * 60 * 2;
+		await ReplaceAsync(item, item.Id);
+		return true;
+	}
 
 }
