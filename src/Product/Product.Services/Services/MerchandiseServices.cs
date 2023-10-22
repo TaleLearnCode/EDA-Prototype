@@ -1,4 +1,5 @@
-﻿namespace BuildingBricks.Product.Services;
+﻿
+namespace BuildingBricks.Product.Services;
 
 public class MerchandiseServices : ServicesBase<Merchandise>
 {
@@ -14,6 +15,8 @@ public class MerchandiseServices : ServicesBase<Merchandise>
 	public async Task<Merchandise> GetAsync(string id) => await GetAsync(id, id);
 
 	public async Task<List<Merchandise>> GetListAsync() => await GetListAsync(_queryText);
+
+	public async Task<List<Merchandise>> GetListByAvailabilityAsync(string availabilityId) => await GetListAsync($"{_queryText} WHERE c.availability > 0 AND c.availabilityId = '{availabilityId}'");
 
 	public async Task<Merchandise> AddAsync(Merchandise item) => await AddAsync(item, item.Id, false);
 

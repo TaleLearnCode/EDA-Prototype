@@ -1,33 +1,28 @@
-using BuildingBricks.Product.Models;
-using BuildingBricks.Product.Services;
-using Microsoft.Azure.Functions.Worker;
-using Microsoft.Extensions.Logging;
-
 namespace BuildingBricks.Product.Functions;
 
-public class ChangeFeedMonitor
+public class MerchandiseMonitor
 {
 
 	private readonly ILogger _logger;
 	private readonly MerchandiseByAvailabilityServices _merchandiseByAvailabilityServices;
 	private readonly MerchandiseByThemeServices _merchandiseByThemeServices;
 
-	public ChangeFeedMonitor(
+	public MerchandiseMonitor(
 		ILoggerFactory loggerFactory,
 		MerchandiseByAvailabilityServices merchandiseByAvailabilityServices,
 		MerchandiseByThemeServices merchandiseByThemeServices)
 	{
-		_logger = loggerFactory.CreateLogger<ChangeFeedMonitor>();
+		_logger = loggerFactory.CreateLogger<MerchandiseMonitor>();
 		_merchandiseByAvailabilityServices = merchandiseByAvailabilityServices;
 		_merchandiseByThemeServices = merchandiseByThemeServices;
 	}
 
-	[Function("ChangeFeedMonitor")]
+	[Function("MerchandiseMonitor")]
 	public async Task RunAsync([CosmosDBTrigger(
 		databaseName: "products",
 		containerName: "merchandise",
 		Connection = "ConnectionString",
-		LeaseContainerName = "leases",
+		LeaseContainerName = "merchandiseLeases",
 		CreateLeaseContainerIfNotExists = true)] IReadOnlyList<Merchandise> changedMerchandises)
 	{
 		if (changedMerchandises != null && changedMerchandises.Count > 0)
