@@ -5,7 +5,7 @@ namespace BuildingBricks.Product.Services;
 public abstract class ServicesBase<T> where T : class, IModel
 {
 
-	private readonly Container _container;
+	protected readonly Container _container;
 
 	protected ServicesBase(ConfigServices configServices, CosmosClient cosmosClient, string containerId)
 		=> _container = cosmosClient.GetDatabase(configServices.ProductCosmosDatabaseId).GetContainer(containerId);

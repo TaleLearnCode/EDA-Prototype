@@ -1,4 +1,6 @@
-﻿namespace BuildingBricks.Product.Services;
+﻿using BuildingBricks.Product.Constants;
+
+namespace BuildingBricks.Product.Services;
 
 public class ThemeServices : MetadataServicesBase<Theme>
 {
@@ -11,9 +13,21 @@ public class ThemeServices : MetadataServicesBase<Theme>
 
 	public async Task<Theme> GetAsync(string id) => await GetMetadataAsync(id);
 
-	public async Task<List<Theme>> GetListAsync() => await GetMetadataListAsync();
+	public async Task<List<Theme>> GetListAsync()
+	{
+		List<Theme> response = new();
+		using FeedIterator<Theme> feed = _container.GetItemQueryIterator<Theme>("SELECT * FROM metadata");
+		while (feed.HasMoreResults)
+		{
+			FeedResponse<Theme> feedResponse = await feed.ReadNextAsync();
+			foreach (Theme item in feedResponse)
+				if (item.MetadataType == MetadataType.Theme)
+					response.Add(item);
+		}
+		return response;
+	}
 
-	public async Task<Dictionary<int, Theme>> GetDictionaryAsync() => await GetMetadataDictionaryAsync();
+	public async Task<Dictionary<int, Theme>> GetDictionaryAsync() => (await GetListAsync()).ToDictionary(x => x.LegacyId, x => x);
 
 	public async Task<Theme> AddAsync(Theme item, bool overrideId = true) => await AddMetadataAsync(item, overrideId);
 

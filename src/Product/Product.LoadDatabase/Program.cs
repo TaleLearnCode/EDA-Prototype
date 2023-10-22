@@ -93,7 +93,7 @@ async Task LoadAvailabilitiesAsync()
 			Availability? availability = JsonSerializer.Deserialize<Availability>(File.ReadAllText(filePath), jsonSerializerOptions);
 			if (availability is not null)
 			{
-				existingAvailabilities.TryGetValue(availability.LegacyId, out Availability? existingAvailability);
+				existingAvailabilities.TryGetValue(Convert.ToInt32(availability.Id), out Availability? existingAvailability);
 				availability.MetadataType = BuildingBricks.Product.Constants.MetadataType.Availability;
 				availability.LegacyId = Convert.ToInt32(availability.Id);
 				availability.Id = existingAvailability?.Id ?? Guid.NewGuid().ToString();
@@ -116,7 +116,7 @@ async Task LoadThemesAsync()
 			Theme? theme = JsonSerializer.Deserialize<Theme>(File.ReadAllText(filePath), jsonSerializerOptions);
 			if (theme is not null)
 			{
-				existingThemes.TryGetValue(theme.LegacyId, out Theme? existingTheme);
+				existingThemes.TryGetValue(Convert.ToInt32(theme.Id), out Theme? existingTheme);
 				theme.MetadataType = BuildingBricks.Product.Constants.MetadataType.Theme;
 				theme.LegacyId = Convert.ToInt32(theme.Id);
 				theme.Id = existingTheme?.Id ?? Guid.NewGuid().ToString();
@@ -130,7 +130,8 @@ async Task LoadThemesAsync()
 async Task LoadMerchandiseAsync()
 {
 	Console.WriteLine("Loading merchandise");
-	MerchandiseServices merchandiseServices = new(configServices, metadataContainer);
+	Container merchandiseContainer = await ConnectToContainerAsync(configServices.ProductMerchandiseContainerId, configServices.ProductMerchandisePartitionKey);
+	MerchandiseServices merchandiseServices = new(configServices, merchandiseContainer);
 	Dictionary<int, Availability> availabilities = await availabilityServices.GetDictionaryAsync();
 	Dictionary<int, Theme> themes = await themeServices.GetDictionaryAsync();
 	IEnumerable<string> filePaths = GetDirectoryFilePaths("Merchandise");

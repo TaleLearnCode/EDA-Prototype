@@ -3,7 +3,7 @@
 /// <summary>
 /// Base class for entities representing product metadata.
 /// </summary>
-public abstract class Metadata : IModel
+public abstract class Metadata : IMetadata
 {
 
 	protected Metadata(string metadataType) => MetadataType = metadataType;

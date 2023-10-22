@@ -127,6 +127,6 @@ public class Merchandise : IModel
 	public bool IsDeleted { get; set; }
 
 	[JsonProperty("ttl")]
-	public int? TTL { get; set; }
+	public int TTL { get; set; } = -1;
 
 }

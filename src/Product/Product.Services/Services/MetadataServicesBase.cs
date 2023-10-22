@@ -5,14 +5,17 @@ public abstract class MetadataServicesBase<T> : ServicesBase<T> where T : Metada
 
 	private readonly string _partitionKeyValue;
 	private readonly string _queryText;
+	private readonly string _metadataType;
 
 	protected MetadataServicesBase(
 		ConfigServices configServices,
 		CosmosClient cosmosClient,
 		string metadataType) : base(configServices, cosmosClient, configServices.ProductMerchandiseContainerId)
 	{
-		_partitionKeyValue = configServices.ProductMetadataPartitionKey;
-		_queryText = $"SELECT * FROM metadata WHERE metadataType = '{metadataType}'";
+		_partitionKeyValue = metadataType;
+		_metadataType = metadataType;
+		//_queryText = $"SELECT * FROM metadata WHERE metadataType = '{metadataType}'";
+		_queryText = $"SELECT * FROM metadata";
 	}
 
 	protected MetadataServicesBase(
@@ -20,8 +23,10 @@ public abstract class MetadataServicesBase<T> : ServicesBase<T> where T : Metada
 		Database database,
 		string metadataType) : base(database, configServices.ProductMerchandiseContainerId)
 	{
-		_partitionKeyValue = configServices.ProductMetadataPartitionKey;
-		_queryText = $"SELECT * FROM metadata WHERE metadataType = '{metadataType}'";
+		_partitionKeyValue = metadataType;
+		_metadataType = metadataType;
+		//_queryText = $"SELECT * FROM metadata WHERE metadataType = '{metadataType}'";
+		_queryText = $"SELECT * FROM metadata";
 	}
 
 	protected MetadataServicesBase(
@@ -29,15 +34,13 @@ public abstract class MetadataServicesBase<T> : ServicesBase<T> where T : Metada
 		Container container,
 		string metadataType) : base(container)
 	{
-		_partitionKeyValue = configServices.ProductMetadataPartitionKey;
-		_queryText = $"SELECT * FROM metadata WHERE metadataType = '{metadataType}'";
+		_partitionKeyValue = metadataType;
+		_metadataType = metadataType;
+		//_queryText = $"SELECT * FROM metadata WHERE metadataType = '{metadataType}'";
+		_queryText = $"SELECT * FROM metadata";
 	}
 
 	public async Task<T> GetMetadataAsync(string id) => await GetAsync(id, _partitionKeyValue);
-
-	public async Task<List<T>> GetMetadataListAsync() => await GetListAsync(_queryText);
-
-	public async Task<Dictionary<int, T>> GetMetadataDictionaryAsync() => (await GetListAsync(_queryText)).ToDictionary(x => x.LegacyId, x => x);
 
 	public async Task<T> AddMetadataAsync(T item, bool overrideId = true) => await AddAsync(item, _partitionKeyValue, overrideId);
 
