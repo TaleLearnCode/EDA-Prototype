@@ -75,7 +75,7 @@
     <Build Include="Product\Tables\Product.sql" />
     <Build Include="Product\Product.sql" />
     <Build Include="Inventory\Tables\InventoryAction.sql" />
-    <Build Include="Inventory\Tables\ProductInventoryTransaction.sql" />
+    <Build Include="Inventory\Tables\InventoryTransaction.sql" />
     <None Include="Inventory\Scripts\Populate\Populate_InventoryAction.sql" />
     <None Include="Inventory\Scripts\Populate\Populate_InventoryTransaction.sql" />
     <Build Include="Inventory\Inventory.sql" />

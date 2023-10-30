@@ -1,6 +1,6 @@
 ﻿CREATE TABLE Notice.NoticeLog
 (
-  NoticeLogId  INT            NOT NULL IDENTITY(1,1),
+  NoticeLogId  VARCHAR(100)   NOT NULL,
   NoticeTypeId INT            NOT NULL,
   CustomerId   INT            NOT NULL,
   SentDateTime DATETIME2      NOT NULL CONSTRAINT dfNotificationLog_SendDateTime DEFAULT(GETUTCDATE()),

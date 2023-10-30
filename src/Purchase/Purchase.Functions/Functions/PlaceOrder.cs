@@ -7,24 +7,24 @@ using TaleLearnCode;
 
 namespace BuildingBricks.Purchase.Functions;
 
-public class PlacePurchase
+public class PlaceOrder
 {
 
 	private readonly ILogger _logger;
 	private readonly JsonSerializerOptions _jsonSerializerOptions;
 	private readonly PurchaseServices _purchaseServices;
 
-	public PlacePurchase(
+	public PlaceOrder(
 		ILoggerFactory loggerFactory,
 		JsonSerializerOptions jsonSerializerOptions,
 		PurchaseServices purchaseServices1)
 	{
-		_logger = loggerFactory.CreateLogger<PlacePurchase>();
+		_logger = loggerFactory.CreateLogger<PlaceOrder>();
 		_jsonSerializerOptions = jsonSerializerOptions;
 		_purchaseServices = purchaseServices1;
 	}
 
-	[Function("PlacePurchase")]
+	[Function("PlaceOrder")]
 	public async Task<HttpResponseData> RunAsync(
 		[HttpTrigger(AuthorizationLevel.Function, "post", Route = "purchases")] HttpRequestData request)
 	{

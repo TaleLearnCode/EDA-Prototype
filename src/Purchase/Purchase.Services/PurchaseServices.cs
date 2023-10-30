@@ -1,5 +1,8 @@
-﻿using BuildingBricks.Purchase.Models;
+﻿using BuildingBricks.Core.EventMessages;
+using BuildingBricks.EventMessages;
+using BuildingBricks.Purchase.Models;
 using BuildingBricks.Purchase.Requests;
+using System.Text.Json;
 
 namespace BuildingBricks.Purchase;
 
@@ -9,6 +12,29 @@ public class PurchaseServices : ServicesBase
 	public PurchaseServices(ConfigServices configServices) : base(configServices) { }
 
 	public async Task<string> PlaceOrderAsync(PlaceOrderRequest placeOrderRequest)
+	{
+
+		// Create the purchase database record
+		CustomerPurchase customerPurchase = await CreatePurchaseRecordAsync(placeOrderRequest);
+
+		// Send the order placed message to the event hub
+		OrderPlacedMessage orderPlacedMessage = BuildOrderPlacedMessage(customerPurchase);
+		await SendMessageToEventHubAsync(
+			_configServices.PurchasePlaceOrderEventHubConnectionString,
+			JsonSerializer.Serialize(orderPlacedMessage));
+
+		// Send the product purchased message to the service bus
+		await SendSessionMessageBatchToServiceBusAsync(
+			_configServices.PurchaseServiceBusPlaceOrderConnectionString,
+			_configServices.PurchaseServiceBusPlaceOrderServiceBusQueueName,
+			customerPurchase.CustomerPurchaseId,
+			BuildSerializedProductPurchaseMessageList(orderPlacedMessage));
+
+		return customerPurchase.CustomerPurchaseId;
+
+	}
+
+	private async Task<CustomerPurchase> CreatePurchaseRecordAsync(PlaceOrderRequest placeOrderRequest)
 	{
 		string purchaseId = Guid.NewGuid().ToString();
 		using PurchaseContext purchaseContext = new(_configServices);
@@ -20,12 +46,7 @@ public class PurchaseServices : ServicesBase
 		};
 		await purchaseContext.CustomerPurchases.AddAsync(customerPurchase);
 		await purchaseContext.SaveChangesAsync();
-
-
-		List<PurchaseLineItem> purchaseLineItems = BuildPurchaseItemsList(placeOrderRequest, purchaseId);
-		purchaseContext.PurchaseLineItems.AddRange(purchaseLineItems);
-		await purchaseContext.SaveChangesAsync();
-		return purchaseId;
+		return customerPurchase;
 	}
 
 	private static List<PurchaseLineItem> BuildPurchaseItemsList(PlaceOrderRequest placeOrderRequest, string purchaseId)
@@ -41,6 +62,39 @@ public class PurchaseServices : ServicesBase
 			});
 		}
 		return purchaseLineItems;
+	}
+
+	private static OrderPlacedMessage BuildOrderPlacedMessage(CustomerPurchase customerPurchase)
+	{
+
+		OrderPlacedMessage orderPlacedMessage = new()
+		{
+			PurchaseId = customerPurchase.CustomerPurchaseId,
+			CustomerId = customerPurchase.CustomerId,
+			Items = new List<ProductPurchasedMessage>()
+		};
+
+		foreach (PurchaseLineItem? purchaseLineItem in customerPurchase.PurchaseLineItems)
+			if (purchaseLineItem is not null)
+				orderPlacedMessage.Items.Add(new()
+				{
+					PurchaseId = customerPurchase.CustomerPurchaseId,
+					PurchaseItemId = purchaseLineItem.PurchaseLineItemId,
+					ProductId = purchaseLineItem.ProductId,
+					Quantity = purchaseLineItem.Quantity
+				});
+
+		return orderPlacedMessage;
+
+	}
+
+	private static List<string> BuildSerializedProductPurchaseMessageList(OrderPlacedMessage orderPlacedMessage)
+	{
+		List<string> response = new();
+		foreach (ProductPurchasedMessage? productPurchased in orderPlacedMessage.Items)
+			if (productPurchased is not null)
+				response.Add(JsonSerializer.Serialize<ProductPurchasedMessage>(productPurchased));
+		return response;
 	}
 
 	public async Task<CustomerPurchase?> GetPurchase(string purchaseId)

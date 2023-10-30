@@ -1,3 +1,8 @@
+using BuildingBricks.Product.Models;
+using BuildingBricks.Product.Services;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Logging;
+
 namespace BuildingBricks.Product.Functions;
 
 public class MerchandiseMonitor

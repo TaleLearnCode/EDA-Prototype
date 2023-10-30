@@ -10,7 +10,7 @@ public partial class NoticeLog
 	/// <summary>
 	/// Identifier for the notice log.
 	/// </summary>
-	public int NoticeLogId { get; set; }
+	public string NoticeLogId { get; set; }
 
 	/// <summary>
 	/// Identifier for the associated notice type.

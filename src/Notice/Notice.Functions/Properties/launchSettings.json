@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "Product.ChangeFeedMonitor2": {
+    "Notice.Functions": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7010",
+      "commandLineArgs": "--port 7297",
       "launchBrowser": false
     }
   }

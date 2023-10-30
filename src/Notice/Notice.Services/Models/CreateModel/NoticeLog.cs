@@ -12,7 +12,10 @@ internal static partial class CreateModel
 
 			entity.ToTable("NoticeLog", "Notice", tb => tb.HasComment("Represents the log of notices sent to customers."));
 
-			entity.Property(e => e.NoticeLogId).HasComment("Identifier for the notice log.");
+			entity.Property(e => e.NoticeLogId)
+				.IsRequired()
+				.HasMaxLength(100)
+				.HasComment("Identifier for the notice log.");
 
 			entity.Property(e => e.CustomerId).HasComment("Identifier for the associated customer.");
 

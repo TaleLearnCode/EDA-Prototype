@@ -1,8 +1,10 @@
-﻿namespace BuildingBricks.EventMessages;
+﻿using BuildingBricks.Core.EventMessages;
+
+namespace BuildingBricks.EventMessages;
 
 public class OrderPlacedMessage
 {
-	public string OrderId { get; init; } = null!;
+	public string PurchaseId { get; init; } = null!;
 	public int CustomerId { get; init; }
-	public List<OrderItemMessage> Items { get; init; } = new List<OrderItemMessage>();
+	public List<ProductPurchasedMessage> Items { get; init; } = new List<ProductPurchasedMessage>();
 }

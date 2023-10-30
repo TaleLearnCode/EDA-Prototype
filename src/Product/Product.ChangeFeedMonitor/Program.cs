@@ -1,3 +1,9 @@
+using BuildingBricks.Core;
+using BuildingBricks.Product.Services;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 string environment = Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT")!;
 string appConfigEndpoint = Environment.GetEnvironmentVariable("AppConfigEndpoint")!;
 ConfigServices configServices = new(appConfigEndpoint, environment);
