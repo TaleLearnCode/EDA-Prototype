@@ -20,7 +20,7 @@ public class PlaceOrderMonitor
 		_noticeServices = noticeServices;
 	}
 
-	[Function("PlaceOrderMonitor")]
+	[Function("Notice-PlaceOrderMonitor")]
 	public async Task RunAsync([EventHubTrigger("%PlaceOrderEventHub%", Connection = "PlaceOrderConnectionString")] EventData[] eventMessages)
 	{
 		foreach (EventData eventMessage in eventMessages)

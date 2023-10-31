@@ -35,4 +35,5 @@ public partial class InventoryContext : DbContext
 	}
 
 	partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
 }
