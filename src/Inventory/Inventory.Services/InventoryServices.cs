@@ -24,7 +24,7 @@ public class InventoryServices : ServicesBase
 			await inventoryContext.SaveChangesAsync();
 
 			// Get the inventory status
-			InventoryStatusResponse? inventoryStatusResponse = await GetInventoryStatusAsync(product.ProductId, inventoryContext);
+			InventoryUpdatedMessage? inventoryStatusResponse = await GetInventoryStatusAsync(product.ProductId, inventoryContext);
 
 			// Send the inventory reserved message
 			InventoryReservedMessage inventoryReservedMessage = new()
@@ -46,21 +46,32 @@ public class InventoryServices : ServicesBase
 
 	}
 
-	public async Task<InventoryStatusResponse?> GetInventoryStatusAsync(string productId)
+	public async Task<InventoryUpdatedMessage?> GetInventoryStatusAsync(string productId)
 	{
 		using InventoryContext inventoryContext = new(_configServices);
 		return await GetInventoryStatusAsync(productId, inventoryContext);
 	}
 
-	private static async Task<InventoryStatusResponse?> GetInventoryStatusAsync(string productId, InventoryContext inventoryContext)
+	public async Task InventoryUpdatedAsync(string productId)
+	{
+		InventoryUpdatedMessage? inventoryUpdatedMessage = await GetInventoryStatusAsync(productId);
+		if (inventoryUpdatedMessage is not null)
+			await SendMessageToEventHubAsync(
+				_configServices.InventoryEventHubsInventoryUpdatedConnectionString,
+				_configServices.InventoryEventHubsInventoryUpdatedEventHubName,
+				JsonSerializer.Serialize(inventoryUpdatedMessage));
+	}
+
+	private static async Task<InventoryUpdatedMessage?> GetInventoryStatusAsync(string productId, InventoryContext inventoryContext)
 	{
 		List<InventoryTransaction> inventoryTransactions = await inventoryContext.InventoryTransactions.Where(x => x.ProductId == productId).ToListAsync();
 		if (inventoryTransactions.Any())
-			return new InventoryStatusResponse()
+			return new InventoryUpdatedMessage()
 			{
 				ProductId = productId,
 				InventoryOnHand = inventoryTransactions.Sum(x => x.InventoryCredit) - inventoryTransactions.Sum(x => x.InventoryDebit),
 				InventoryReserved = inventoryTransactions.Sum(x => x.InventoryReserve),
+				InventoryAvailable = inventoryTransactions.Sum(x => x.InventoryCredit) - (inventoryTransactions.Sum(x => x.InventoryDebit) + inventoryTransactions.Sum(x => x.InventoryReserve)),
 				LastUpdate = inventoryTransactions.Max(x => x.ActionDateTime)
 			};
 		else

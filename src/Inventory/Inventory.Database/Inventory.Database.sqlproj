@@ -80,6 +80,7 @@
     <None Include="Inventory\Scripts\Populate\Populate_InventoryTransaction.sql" />
     <Build Include="Inventory\Inventory.sql" />
     <None Include="Product\Scripts\Populate\Populate_Product.sql" />
+    <None Include="EnableChangeTracking.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

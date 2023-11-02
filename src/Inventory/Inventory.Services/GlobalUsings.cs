@@ -4,6 +4,5 @@ global using BuildingBricks.Core.EventMessages;
 global using BuildingBricks.EventMessages;
 global using BuildingBricks.Inventory.Constants;
 global using BuildingBricks.Inventory.Models;
-global using BuildingBricks.Inventory.Responses;
 global using Microsoft.EntityFrameworkCore;
 global using System.Text.Json;

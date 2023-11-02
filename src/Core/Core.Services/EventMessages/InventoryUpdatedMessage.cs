@@ -1,10 +1,10 @@
-﻿namespace BuildingBricks.Inventory.Responses;
+﻿namespace BuildingBricks.Core.EventMessages;
 
-public class InventoryStatusResponse
+public class InventoryUpdatedMessage
 {
 	public string ProductId { get; set; } = null!;
 	public int InventoryOnHand { get; set; }
 	public int InventoryReserved { get; set; }
-	public int InventoryAvailable => InventoryOnHand - InventoryReserved;
+	public int InventoryAvailable { get; set; }
 	public DateTime LastUpdate { get; set; }
 }
