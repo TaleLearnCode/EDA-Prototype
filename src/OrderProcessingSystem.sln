@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notice.Functions", "Notice\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Functions", "Inventory\Inventory.Functions\Inventory.Functions.csproj", "{3649A5FE-4157-451F-ADA0-65BE297255B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Functions", "Product\Product.Functions\Product.Functions.csproj", "{AA44D907-12D6-49A6-A712-AC4BB675AB8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{3649A5FE-4157-451F-ADA0-65BE297255B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3649A5FE-4157-451F-ADA0-65BE297255B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3649A5FE-4157-451F-ADA0-65BE297255B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA44D907-12D6-49A6-A712-AC4BB675AB8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA44D907-12D6-49A6-A712-AC4BB675AB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA44D907-12D6-49A6-A712-AC4BB675AB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA44D907-12D6-49A6-A712-AC4BB675AB8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,6 +161,7 @@ Global
 		{10DD8B29-9A27-441C-9264-E0D41AABFF5B} = {11FF5CB6-DAA4-4545-A522-EFC74C4FF2FC}
 		{F4105768-B7B6-42EA-BCE4-F8E475FAF5CE} = {30443ACC-FF9C-43F7-B1A8-F6039A31E042}
 		{3649A5FE-4157-451F-ADA0-65BE297255B8} = {AB34A621-FEC8-4FB3-99E9-D8F81C8D2CAD}
+		{AA44D907-12D6-49A6-A712-AC4BB675AB8A} = {11FF5CB6-DAA4-4545-A522-EFC74C4FF2FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F15D7C67-06E2-4861-8D6A-3DC0528F8314}

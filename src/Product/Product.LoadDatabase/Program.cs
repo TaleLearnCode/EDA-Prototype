@@ -131,7 +131,7 @@ async Task LoadMerchandiseAsync()
 {
 	Console.WriteLine("Loading merchandise");
 	Container merchandiseContainer = await ConnectToContainerAsync(configServices.ProductMerchandiseContainerId, configServices.ProductMerchandisePartitionKey);
-	MerchandiseServices merchandiseServices = new(configServices, merchandiseContainer);
+	MerchandiseServices merchandiseServices = new(merchandiseContainer);
 	Dictionary<int, Availability> availabilities = await availabilityServices.GetDictionaryAsync();
 	Dictionary<int, Theme> themes = await themeServices.GetDictionaryAsync();
 	IEnumerable<string> filePaths = GetDirectoryFilePaths("Merchandise");

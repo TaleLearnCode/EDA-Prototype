@@ -10,7 +10,7 @@ public class MerchandiseServices : ServicesBase<Merchandise>
 
 	public MerchandiseServices(ConfigServices configServices, Database database) : base(database, configServices.ProductMerchandiseContainerId) { }
 
-	public MerchandiseServices(ConfigServices configServices, Container container) : base(container) { }
+	public MerchandiseServices(Container container) : base(container) { }
 
 	public async Task<Merchandise> GetAsync(string id) => await GetAsync(id, id);
 
