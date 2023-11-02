@@ -29,8 +29,10 @@ public class InventoryServices : ServicesBase
 			// Send the inventory reserved message
 			InventoryReservedMessage inventoryReservedMessage = new()
 			{
+				CustomerId = productPurchasedMessage.CustomerId,
 				OrderId = productPurchasedMessage.PurchaseId,
 				ProductId = productPurchasedMessage.ProductId,
+				ProductName = product.ProductName,
 				QuantityOnHand = inventoryStatusResponse?.InventoryOnHand - inventoryStatusResponse?.InventoryReserved ?? 0,
 				Backordered = inventoryStatusResponse is null || inventoryStatusResponse.InventoryAvailable < 1
 			};
