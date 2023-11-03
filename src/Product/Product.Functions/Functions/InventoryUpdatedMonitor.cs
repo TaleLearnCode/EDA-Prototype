@@ -83,5 +83,4 @@ public class InventoryUpdatedMonitor
 		await _merchandiseServices.ReplaceAsync(merchandise);
 	}
 
-
 }
