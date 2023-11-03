@@ -14,6 +14,7 @@ Database database = cosmosClient.GetDatabase(configServices.ProductCosmosDatabas
 MerchandiseServices merchandiseServices = new(database.GetContainer(configServices.ProductMerchandiseContainerId));
 MerchandiseByAvailabilityServices merchandiseByAvailabilityServices = new(configServices, database.GetContainer(configServices.ProductsByAvailabilityContainerId));
 MerchandiseByThemeServices merchandiseByThemeServices = new(configServices, database.GetContainer(configServices.ProductsByThemeContainerId));
+AvailabilityServices availabilityServices = new(configServices, database.GetContainer(configServices.ProductMetadataContainerId));
 
 IHost host = new HostBuilder()
 	.ConfigureFunctionsWorkerDefaults()
@@ -23,6 +24,7 @@ IHost host = new HostBuilder()
 		s.AddSingleton((s) => { return merchandiseServices; });
 		s.AddSingleton((s) => { return merchandiseByAvailabilityServices; });
 		s.AddSingleton((s) => { return merchandiseByThemeServices; });
+		s.AddSingleton((s) => { return availabilityServices; });
 	})
 	.Build();
 

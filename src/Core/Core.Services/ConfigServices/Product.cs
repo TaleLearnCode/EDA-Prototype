@@ -19,6 +19,8 @@ public partial class ConfigServices
 	private const string _Product_MerchandiseByThemeContainerId = "Product:Cosmos:MerchandiseByTheme:ContainerId";
 	private const string _Product_MerchandiseByThemePartitionKey = "Product:Cosmos:MerchandiseByTheme:PartitionKey";
 
+	private const string _Product_InventoryUpdatedEventHub_ConnectionString = "Product:EventHubs:InventoryUpdated:ConnectionString";
+
 	public string ProductCosmosDatabaseId => GetConfigValue(_Product_CosmosDatabaseId);
 
 	public string ProductMetadataContainerId => GetConfigValue(_Product_MetadataContainerId);
@@ -36,5 +38,7 @@ public partial class ConfigServices
 	public string ProductsByThemeContainerId => GetConfigValue(_Product_MerchandiseByThemeContainerId);
 
 	public string ProductsByThemePartitionKey => GetConfigValue(_Product_MerchandiseByThemePartitionKey);
+
+	public string ProductInventoryUpdatedEventHubConnectionString => GetConfigValue(_Product_InventoryUpdatedEventHub_ConnectionString);
 
 }
